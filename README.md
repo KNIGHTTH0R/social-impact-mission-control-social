@@ -15,7 +15,7 @@ If company is not in mongo will fetch for all fields, build an object, inject in
 ##Sample output
 http://msom.eu01.aws.af.cm/index.php/companies/amazon>
 
-'''
+```json
 
 {
     "name": "rackspace",
@@ -174,4 +174,4 @@ http://msom.eu01.aws.af.cm/index.php/companies/amazon>
     ]
 }
 
-'''
+```
