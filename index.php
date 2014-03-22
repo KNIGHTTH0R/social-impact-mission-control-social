@@ -51,17 +51,43 @@
             else
             {
                 $twitter = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
-                $tweets = $twitter->get('search/tweets', array(
-                    'result_type' => "popular",
-                    'q' => '@'.$company,
-                    'count' => 10
+                $tweets = $twitter->get('statuses/user_timeline', array(
+                    'screen_name' => $company,
+                    'count' => 25
                 ));
-                echo json_encode($tweets);
 
+                $tweetsEncoded = "";
+                $count = 0;
+
+                foreach($tweets as $tweet)
+                {
+                    if($count > 0)
+                    {
+                        $tweetsEncoded.=',';
+                    } //eeeeeeeh
+
+                    $tweetsEncoded.=
+                        '{'.
+                            '"text" : "'.$tweet->text.'",
+                            "dateTime" : "'.$tweet->created_at.'",
+                            "user_name" : "'.$tweet->user->name.'",
+                            "verified" : "'.$tweet->user->verfified.'"
+                        }';
+
+                    $count += 1;
+                }
+
+                $q =
+                    '{
+                        "name" : "'.$company.'",
+                        "lastRefresh" :"'.time().'",
+                        "tweets" : ['.$tweetsEncoded.']
+                     }';
+
+                echo $q;
+                $collection
+                    ->insert(json_decode($q));
             }
-
-
-
         }
     }
 
