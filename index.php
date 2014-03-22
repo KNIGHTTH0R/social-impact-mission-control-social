@@ -2,10 +2,7 @@
 	require("toro.php");
 	require("apiKeys.php");
 
-	 $mon = new Mongo(getenv("MONGOLAB_URI"));
-	 $db = $mon->msomb;
-
-	 $collection = $db->companies;
+	
 
 	Toro::serve(array(
 		"/" => "RootHandler",
@@ -27,16 +24,28 @@
 	class Companies{
 		function get() {
 			//return all companies
+
+			$m = new Mongo(getenv("MONGOLAB_URI"));
+			$db = $m->msom0;
+			$collection = $db->companies;
+
 			$companiesDatas = $collection->find();
-			echo $companiesDatas;
+
+            echo json_encode(iterator_to_array($companiesDatas));
 		}
 	}
 	class CompanySpecific{
 		function get($company){
 			//return data for :company
-			$companyQuery = array('name' => $company);
-			$companiesDatas = $collection->find($companyQuery);
-			echo $companiesDatas;
+
+			$m = new Mongo(getenv("MONGOLAB_URI"));
+			$db = $m->msom0;
+
+			$collection = $db->companies;
+			$companiesDatas = $collection
+                ->find(json_decode('{ "name" : "'.$company.'" }'));
+
+			echo json_encode(iterator_to_array($companiesDatas));
 		}
 	}
 
