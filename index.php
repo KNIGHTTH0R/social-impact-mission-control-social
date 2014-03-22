@@ -1,66 +1,76 @@
-<?php
-	require("toro.php");
-	require("apiKeys.php");
+    <?php
+        require("toro.php");
+        require("apiKeys.php");
 
-	
 
-	Toro::serve(array(
-		"/" => "RootHandler",
-		"/companies/" => "Companies",
-		"/companies/:string" => "CompanySpecific"
-	));
 
-	// /
-	Class RootHandler{
-		function get() {
-			echo "Endpoints:\n\n";
-			echo "/ => Root\n";
+        Toro::serve(array(
+            "/" => "RootHandler",
+            "/companies/" => "Companies",
+            "/companies/:string" => "CompanySpecific"
+        ));
 
-			echo "Current time:".time()."<br/>";
-		}
-	}
+        // /
+        Class RootHandler{
+            function get() {
+                echo "Endpoints:\n\n";
+                echo "/ => Root\n";
 
-	// /companies
-	class Companies{
-		function get() {
-			//return all companies
+                echo "Current time:".time()."<br/>";
+            }
+        }
 
-			$m = new Mongo(getenv("MONGOLAB_URI"));
-			$db = $m->msom0;
-			$collection = $db->companies;
+        // /companies
+        class Companies{
+            function get() {
+                //return all companies
 
-			$companiesDatas = $collection->find();
+                $m = new Mongo(getenv("MONGOLAB_URI"));
+                $db = $m->msom0;
+                $collection = $db->companies;
 
-            echo json_encode(iterator_to_array($companiesDatas));
-		}
-	}
-	class CompanySpecific{
-		function get($company){
-			//return data for :company
+                $companiesDatas = $collection->find();
 
-			$m = new Mongo(getenv("MONGOLAB_URI"));
-			$db = $m->msom0;
+                echo json_encode(iterator_to_array($companiesDatas));
+            }
+        }
+        class CompanySpecific{
+            function get($company){
+                //return data for :company
 
-			$collection = $db->companies;
-			$companiesDatas = $collection
-                ->find(json_decode('{ "name" : "'.$company.'" }'));
+                $m = new Mongo(getenv("MONGOLAB_URI"));
+                $db = $m->msom0;
 
-			echo json_encode(iterator_to_array($companiesDatas));
-		}
-	}
+                $collection = $db->companies;
+                $companiesDatas = $collection
+                    ->find(json_decode('{ "name" : "'.$company.'" }'));
 
-	class Twitter {
+                if( $companiesDatas->count() > 0)
+                {
+                    echo json_encode(iterator_to_array($companiesDatas));
+                }
+                else
+                {
 
-		function authenticate(){
+                }
 
-		}
 
-	}
 
-	class DBInteract{
-		function retrieveSocialNews(){
+            }
+        }
 
-		}
-	}
+        class Twitter {
 
-?>
+            function authenticate(){
+
+            }
+
+        }
+
+        class DBInteract{
+            function retrieveSocialNews(){
+
+            }
+        }
+
+    ?>
