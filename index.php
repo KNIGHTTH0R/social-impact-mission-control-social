@@ -10,7 +10,7 @@
 	Toro::serve(array(
 		"/" => "RootHandler",
 		"/companies/" => "Companies",
-		"/companies/socialData/:company" => "CompaniesSocial",
+		"/companies/:string" => "CompanySpecific"
 	));
 
 	// /
@@ -27,18 +27,16 @@
 	class Companies{
 		function get() {
 			//return all companies
-			echo "##Companies";
 			$companiesDatas = $collection->find();
-			echo "comp".$companiesDatas;
+			echo $companiesDatas;
 		}
 	}
-	
-	// /companies/socialData/:company
-	class CompaniesSocial{
-		function get(){
-			//return socialData for :company#
-			$companiesDatas = $collection->find();
-			echo "comp".$companiesDatas;
+	class CompanySpecific{
+		function get($company){
+			//return data for :company
+			$companyQuery = array('name' => $company);
+			$companiesDatas = $collection->find($companyQuery);
+			echo $companiesDatas;
 		}
 	}
 
