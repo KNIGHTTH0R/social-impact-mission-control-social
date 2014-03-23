@@ -1,5 +1,5 @@
 #Mdump - Social Mediocracy
-
+tl;dr: Generates a profile of a company's public social interactions, mongo's it, and exposes via the usual json get/post
 ##Usage
 ***
 "http://msom.eu01.aws.af.cm/index.php/companies/<company>" -> returns data for <company> from mongo
