@@ -7,6 +7,7 @@
     Toro::serve(array(
         "/" => "RootHandler",
         "/companies/" => "Companies",
+        "/companies/" => "Companies",
         "/companies/:string" => "CompanySpecific",
         "/test/fb/" => "FBTesting"
     ));
@@ -65,6 +66,22 @@
 
                 foreach($tweets as $tweet)
                 {
+                    //sentiment
+                    $senUrl = "http://wesoc.herokuapp.com/sentiment/";
+                    $senData = array('texts' => $tweet->text);
+                    $options = array(
+                        'http' => array(
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'POST',
+                            'content' => http_build_query($senData),
+                        )
+                    );
+
+                    $senContext  = stream_context_create($options);
+                    $senResult = file_get_contents($senUrl, false, $senContext);
+
+                    //echo json_encode(json_decode($senResult)->texts[0]->text);
+
                     if($count > 0)
                     {
                         $tweetsEncoded.=',';
@@ -72,10 +89,11 @@
 
                     $tweetsEncoded.=
                         '{'.
-                            '"text" : "'.$tweet->text.'",
+                            '"text" : "'. escapeJsonString($tweet->text).'",
                             "dateTime" : "'.$tweet->created_at.'",
                             "user_name" : "'.$tweet->user->name.'",
-                            "verified" : "'.$tweet->user->verified.'"
+                            "verified" : "'.$tweet->user->verified.'",
+                            "sentiment" : "'.json_decode($senResult)->texts[0]->sentiment.'"
                         }';
 
                     $count += 1;
@@ -92,14 +110,9 @@
 
                 $fbSelfPostsEncoded = "";
                 $fcount = 0;
-                
+
                 foreach($fbResponse['data'] as $response)
                 {
-                    if($fcount > 0)
-                    {
-                        $fbSelfPostsEncoded.=',';
-                    }
-
                     $coreMessage = "";
                     if($response["message"] == ""){
                         $coreMessage = $response["story"];
@@ -109,16 +122,37 @@
                     }
 
 
+                    $senUrl = "http://wesoc.herokuapp.com/sentiment/";
+                    $senData = array('texts' => $coreMessage);
+                    $options = array(
+                        'http' => array(
+                            'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                            'method'  => 'POST',
+                            'content' => http_build_query($senData),
+                        )
+                    );
+
+                    $senContext  = stream_context_create($options);
+                    $senResult = file_get_contents($senUrl, false, $senContext);
+
+                    if($fcount > 0)
+                    {
+                        $fbSelfPostsEncoded.=',';
+                    }
+
                     $fbSelfPostsEncoded.=
                         '{'.
                             '"message" : "'.escapeJsonString($coreMessage).'",
                             "dateTime" : "'.$response["created_time"].'",
                             "page_name" : "'.$response["from"]["name"].'",
-                            "like_count" : "'.count($response["likes"]["data"]).'"
+                            "like_count" : "'.count($response["likes"]["data"]).'",
+                            "sentiment" : "'.json_decode($senResult)->texts[0]->sentiment.'"
                         }';
 
                     $fcount += 1;
                 }
+                //sentiment
+
 
                 //mash
                 $q =
