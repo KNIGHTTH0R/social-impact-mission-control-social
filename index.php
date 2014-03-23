@@ -50,7 +50,8 @@
 
             if( $companiesDatas->count() > 0)
             {
-                echo json_encode(iterator_to_array($companiesDatas));
+                $x = array_values(iterator_to_array($companiesDatas));
+                echo json_encode($x[0]);
             }
             else
             {
