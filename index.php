@@ -15,9 +15,10 @@
     Class RootHandler{
         function get() {
             echo "Endpoints:\n\n";
-            echo "/ => Root\n";
-
-            echo "Current time:".time()."<br/>";
+            echo "GET / => Root\n";
+            echo "GET /companies/ => Returns all companies in the Mongo\n";
+            echo "GET /companies/:string => Returns data for :string company\n";
+            echo "Current time:".time()."\n";
         }
     }
 
