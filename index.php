@@ -101,10 +101,10 @@
 
                     $fbSelfPostsEncoded.=
                         '{'.
-                            '"message" : "'.$response->message.'",
-                            "dateTime" : "'.$response->created_time.'",
-                            "page_name" : "'.$response->from->name.'",
-                            "like_count" : "'.count($response->likes->data).'"
+                            '"message" : "'.escapeJsonString($response["message"]).'",
+                            "dateTime" : "'.$response["created_time"].'",
+                            "page_name" : "'.$response["from"]["name"].'",
+                            "like_count" : "'.count($response["likes"]["data"]).'"
                         }';
 
                     $fcount += 1;
@@ -129,6 +129,13 @@
         }
     }
 
+    function escapeJsonString($value) { # list from www.json.org: (\b backspace, \f formfeed)
+        $escapers = array("\\", "/", "\"", "\n", "\r", "\t", "\x08", "\x0c");
+        $replacements = array("\\\\", "\\/", "\\\"", "\\n", "\\r", "\\t", "\\f", "\\b");
+        $result = str_replace($escapers, $replacements, $value);
+        return $result;
+    }
+
     class FBTesting{
     function get(){
         //facebook
@@ -139,7 +146,7 @@
         $fbResponse = $fb->api(
             "/rackspace/posts"
         );
-        echo(json_encode($fbResponse));
+        echo(json_encode($fbResponse["data"]));
         $facebooksEncoded = "";
     }
 }
