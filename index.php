@@ -100,9 +100,18 @@
                         $fbSelfPostsEncoded.=',';
                     }
 
+                    $coreMessage = "";
+                    if($response["message"] == ""){
+                        $coreMessage = $response["story"];
+                    }
+                    else{
+                        $coreMessage = $response["message"];
+                    }
+
+
                     $fbSelfPostsEncoded.=
                         '{'.
-                            '"message" : "'.escapeJsonString($response["message"]).'",
+                            '"message" : "'.escapeJsonString($coreMessage).'",
                             "dateTime" : "'.$response["created_time"].'",
                             "page_name" : "'.$response["from"]["name"].'",
                             "like_count" : "'.count($response["likes"]["data"]).'"
@@ -151,5 +160,4 @@
         $facebooksEncoded = "";
     }
 }
-
 ?>
