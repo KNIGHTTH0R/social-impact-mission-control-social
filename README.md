@@ -2,12 +2,12 @@
 tl;dr: Generates a profile of a company's public social interactions, mongo's it, and exposes via the usual json get/post
 ##Usage
 ***
-"http://msom.eu01.aws.af.cm/index.php/companies/<company>" -> returns data for <company> from mongo
-"http://msom.eu01.aws.af.cm/index.php/companies/" -> returns all companies from mongo
+"http://msom.eu01.aws.af.cm/index.php/companies/<company>" -> Returns the data for specified company
+"http://msom.eu01.aws.af.cm/index.php/companies/" -> Returns all companies currently stored/"cached" in mongo
 
-If company is not in mongo will fetch for all fields, build an object, inject into mongo, return. - This is transparent and does not affect the client (bar query time)
+If requested company is not in mongo, it will fetch for all fields, build an object, inject into mongo, and return. - This is transparent and does not affect the request (bar a delayed initial response time)
 
-Create a new apiKeys.php, apiKeys_sample.php provides a template.
+Create a new apiKeys.php before use, apiKeys_sample provides a template.
 
 ##Imports
 ***
