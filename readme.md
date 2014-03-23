@@ -1,4 +1,4 @@
-#Mdump - Social Mediocracy
+#Mdump - Social Mediocrity 
 tl;dr: Generates a profile of a company's public social interactions, mongo's it, and exposes via the usual json get/post
 ##Usage
 ***
