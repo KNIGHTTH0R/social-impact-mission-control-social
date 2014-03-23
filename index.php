@@ -1,12 +1,14 @@
 <?php
     require("toro.php");
     require("apiKeys.php");
+    require("facebook.php");
     require_once("twitteroauth.php");
 
     Toro::serve(array(
         "/" => "RootHandler",
         "/companies/" => "Companies",
-        "/companies/:string" => "CompanySpecific"
+        "/companies/:string" => "CompanySpecific",
+        "/test/fb/" => "FBTesting"
     ));
 
     // /
@@ -50,6 +52,7 @@
             }
             else
             {
+                //twitter
                 $twitter = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
                 $tweets = $twitter->get('statuses/user_timeline', array(
                     'screen_name' => $company,
@@ -71,38 +74,74 @@
                             '"text" : "'.$tweet->text.'",
                             "dateTime" : "'.$tweet->created_at.'",
                             "user_name" : "'.$tweet->user->name.'",
-                            "verified" : "'.$tweet->user->verfified.'"
+                            "verified" : "'.$tweet->user->verified.'"
                         }';
 
                     $count += 1;
                 }
 
+                //facebook
+                $fb = new Facebook(array(
+                    'appId' => FBAPPID,
+                    'secret' => FBSECRET
+                ));
+                $fbResponse = $fb->api(
+                    "/".$company."/posts"
+                );
+
+                $fbSelfPostsEncoded = "";
+                $fcount = 0;
+                
+                foreach($fbResponse['data'] as $response)
+                {
+                    if($fcount > 0)
+                    {
+                        $fbSelfPostsEncoded.=',';
+                    }
+
+                    $fbSelfPostsEncoded.=
+                        '{'.
+                            '"message" : "'.$response->message.'",
+                            "dateTime" : "'.$response->created_time.'",
+                            "page_name" : "'.$response->from->name.'",
+                            "like_count" : "'.count($response->likes->data).'"
+                        }';
+
+                    $fcount += 1;
+                }
+
+                //mash
                 $q =
                     '{
                         "name" : "'.$company.'",
                         "lastRefresh" :"'.time().'",
-                        "tweets" : ['.$tweetsEncoded.']
+                        "tweets" : ['.$tweetsEncoded.'],
+                        "fbSelfPosts" : ['.$fbSelfPostsEncoded.']
                      }';
 
+                //echo
                 echo $q;
+
+                //insert
                 $collection
                     ->insert(json_decode($q));
             }
         }
     }
 
-    class Twitter {
-
-        function authenticate(){
-
-        }
-
+    class FBTesting{
+    function get(){
+        //facebook
+        $fb = new Facebook(array(
+            'appId' => FBAPPID,
+            'secret' => FBSECRET
+        ));
+        $fbResponse = $fb->api(
+            "/rackspace/posts"
+        );
+        echo(json_encode($fbResponse));
+        $facebooksEncoded = "";
     }
-
-    class DBInteract{
-        function retrieveSocialNews(){
-
-        }
-    }
+}
 
 ?>

@@ -8,6 +8,7 @@
 
 If company is not in mongo will fetch for all fields, build an object, inject into mongo, return. - This is transparent and does not affect the client (bar query time)
 
+Create a new apiKeys.php, apiKeys_sample.php provides a template.
 
 ##Imports
 - toroweb
