@@ -1,7 +1,12 @@
 #Mdump - Social Mediocrity 
 tl;dr: Generates a profile of a company's public social interactions, mongo's it, and exposes via the usual json get/post
 
-This was a hack from the Social Impact Hackathon developed during an additional modding day, a component of the larger "Mission Control" v2 dashboard project. (https://github.com/atleastimtrying/missiondump) and (https://github.com/hrickards/social_impact)
+This was a hack from the Social Impact Hackathon developed during the additional modding day, a component of the larger "Mission Control" v2 dashboard project.
+- (https://github.com/atleastimtrying/missiondump)
+- (https://github.com/hrickards/social_impact)
+
+Data used for this component was mainly gained from social media, designed to supplement the core data used by the other components. Currently we use Facebook and Twitter for this, but only request the basic posts and update feeds, if we were to expand we could make use the addional endpoints available, as well as hook in other networks such as LinkedIn and potentially App.Net.
+
 ##Usage
 ***
 "http://msom.eu01.aws.af.cm/index.php/companies/<company>" -> Returns the data for specified company
@@ -549,3 +554,6 @@ Returns:
             "message": "",
             "dateTime": "2014-01-15T00:28:00+0000",
             "page_name": "Rackspace Hosting
+```
+
+Kaelan Fouwels 2014 - @kfouwels on Twitter, Github and Outlook.
