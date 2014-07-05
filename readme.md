@@ -64,166 +64,121 @@ Returns:
             "text": "@leydon Happy to have a Racker reach out to you for an assist. Send your account details to help@rackspace.com and we'll contact you ASAP.",
             "dateTime": "Sat Mar 22 20:13:36 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "0"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@bengoerz Please DM us or email your account# to help@rackspace.com, and we'll help investigate. Thanks!",
             "dateTime": "Fri Mar 21 21:26:26 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "0.1"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@bengoerz There can be several factors that influence resize time, but sounds like it would be best to have Support take a look.",
             "dateTime": "Fri Mar 21 21:25:52 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "-0.4375"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@botchagalupe We'll pass along your suggestion :) The world shall one day know the awesomeness that is Jason Grimm.",
             "dateTime": "Fri Mar 21 19:10:52 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "0.25"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "SumAll talks scale, performance; new Cloud Block Storage feature; a startup demo day; more in the weekly digest http://t.co/C6LX4cDWYB",
             "dateTime": "Fri Mar 21 15:09:23 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "0.291666666667"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@dgomez ¿Hay algo que pueda ayudar?",
             "dateTime": "Fri Mar 21 15:05:40 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "0"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@MomonMars Very happy you like them! :) cc @kr8tr",
             "dateTime": "Fri Mar 21 12:07:13 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "1.40625"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@mcowger Thanks, we try! Can we offer a free tshirt as a welcome gift? Please email help@rackspace.com with your size &amp; address!",
             "dateTime": "Fri Mar 21 00:59:20 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "1.25"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@seanpcoyle so sorry about that. We are investigating. In the meantime, could you give us a call? http://t.co/BQXJ6bPmGJ @jwazdet",
             "dateTime": "Thu Mar 20 22:41:05 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "-0.083333333333"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@seanpcoyle Apologies for the wait - were you successful getting through to a Racker? @jwazdet",
             "dateTime": "Thu Mar 20 21:55:38 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "0.625"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@dglancy Is there anything particular you're having difficulty with? Would like to understand and improve. Thanks!",
             "dateTime": "Thu Mar 20 21:45:41 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "0.0375"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@KultureShockNet We're really sorry to hear that. What happened? We'd like to follow up. Please send details to help@rackspace.com.",
             "dateTime": "Thu Mar 20 19:27:30 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "1.291666666667"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@tonyfabeen Your account manager can help with that! Please DM us or email your contact to help@rackspace.com.",
             "dateTime": "Thu Mar 20 18:31:24 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "0.625"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@joeltimothy Can you please email help@rackspace.com and remind us of your tshirt size and address? ;)",
             "dateTime": "Thu Mar 20 18:14:58 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "1.75"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "Join the discussion on scalable databases on our LIVE Cloud Office Hours Hangout - Right Now http://t.co/iIhtyJV9mf #CloudQA",
             "dateTime": "Thu Mar 20 18:01:40 +0000 2014",
             "user_name": "Rackspace",
-<<<<<<< HEAD
             "verified": "1",
             "sentiment": "1.157967032967"
-=======
             "verified": "1"
->>>>>>> 956f9774b2fc6362c9157235fba440cffd4ddd52
         },
         {
             "text": "@onedeadgod Happy to have a Racker reach out to you. Please send your acct info to help@rackspace.com and we'll contact you ASAP. Thanks!",
